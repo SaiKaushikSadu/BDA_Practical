@@ -1,0 +1,39 @@
+ print("Bloom Filter Algorithm") 
+ h1_func <- function(x){
+ return (x %% 5)
+ }
+ 
+ h2_func <- function(x){
+ return (((2*x)+4) %% 5)
+ }
+ 
+ 
+ v<-c(13,17,15,26,24)
+ print("The elements present in the set")
+ print(v)
+
+ bool_v<-c(0,0,0,0,0)
+ 
+ for(i in 1:length(v)){
+ h1_val=h1_func(v[i])
+ h2_val=h2_func(v[i])
+ 
+ bool_v[h1_val+1]=1
+ bool_v[h2_val+1]=1
+ print("Hash value table")
+ print(paste("| ",v[i]," | ",h1_val," | ",h2_val," | "))
+ }
+
+
+num<- 16
+
+h1_num<-h1_func(num)
+h2_num<-h2_func(num)
+
+print(paste(h1_num," | ",h2_num))
+
+if(bool_v[h1_num+1]==0 || bool_v[h2_num+1]==0){
+	print("the number doesnot exist")
+} else{
+	print("the number may exist")
+}

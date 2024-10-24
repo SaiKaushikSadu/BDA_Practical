@@ -1,0 +1,105 @@
+print("FM Algorithm")
+
+hash_func<-function(x){
+	return (x%%5)
+}
+
+count_tz<- function(x){
+	binn<-intToBits(x)
+count<-0
+for(i in 1:length(binn)){
+if(binn[i]==0){
+	count<-count+1
+} else {
+	break
+}
+}
+return (count)
+}
+
+fm<- function(v){
+maxi<-0
+	
+for(i in v){
+hash_val<-hash_func(i)
+bin<-intToBits(i)
+tz<-count_tz(i)
+maxi<-max(maxi,tz)
+print(paste("Element:", i))
+print(paste("Hash value:", hash_val))
+print(paste("Trailing zeros count:", tz))
+}
+
+return (maxi)
+
+}
+
+v<- c(1,4,2,5,2)
+ans<-fm(v)
+print(paste("Maximum number of trailing zeros are ",ans))
+print(paste("Number of distinct elements are ",2**ans))
+
+
+
+------------------------------------------------
+
+
+> print("FM Algorithm")
+[1] "FM Algorithm"
+> 
+> hash_func<-function(x){
++ return (x%%5)
++ }
+> 
+> count_tz<- function(x){
++ binn<-intToBits(x)
++ count<-0
++ for(i in 1:length(binn)){
++ if(binn[i]==0){
++ count<-count+1
++ } else {
++ break
++ }
++ }
++ return (count)
++ }
+> 
+> fm<- function(v){
++ maxi<-0
++ 
++ for(i in v){
++ hash_val<-hash_func(i)
++ bin<-intToBits(i)
++ tz<-count_tz(i)
++ maxi<-max(maxi,tz)
++ print(paste("Element:", i))
++ print(paste("Hash value:", hash_val))
++ print(paste("Trailing zeros count:", tz))
++ }
++ 
++ return (maxi)
++ 
++ }
+> 
+> v<- c(1,4,2,5,2)
+> ans<-fm(v)
+[1] "Element: 1"
+[1] "Hash value: 1"
+[1] "Trailing zeros count: 0"
+[1] "Element: 4"
+[1] "Hash value: 4"
+[1] "Trailing zeros count: 2"
+[1] "Element: 2"
+[1] "Hash value: 2"
+[1] "Trailing zeros count: 1"
+[1] "Element: 5"
+[1] "Hash value: 0"
+[1] "Trailing zeros count: 0"
+[1] "Element: 2"
+[1] "Hash value: 2"
+[1] "Trailing zeros count: 1"
+> print(paste("Maximum number of trailing zeros are ",ans))
+[1] "Maximum number of trailing zeros are  2"
+> print(paste("Number of distinct elements are ",2**ans))
+[1] "Number of distinct elements are  4"
+> 
